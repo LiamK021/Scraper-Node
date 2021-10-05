@@ -9,7 +9,8 @@
     "got": "^11.8.2",
     "jsdom": "^17.0.0",
     "moment": "^2.29.1",
-    "mysql2": "^2.3.0"
+    "mysql2": "^2.3.0",
+    "puppeteer": "^10.4.0"
   },
   "devDependencies": {},
   "scripts": {
