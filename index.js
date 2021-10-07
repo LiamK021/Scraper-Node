@@ -1,4 +1,6 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
+const { parse } = require('path');
 
 async function scraperStart(){
     await scraperPage();
@@ -17,7 +19,24 @@ var scraperPage = async function(){
         let infos = document.body.querySelector(".api-module--apiData--15-o7").textContent;
         return infos;
     })
-    console.log(infos);
+    let result = "";
+    for ( var i = 0 ; i< infos.length; i++){
+        if ( infos[i] == "{"){
+            result += ("\n" + infos[i])
+        }
+        else {
+            result += infos[i]
+        }
+    }
+    // console.log("result: ", result);
+
+    fs.writeFile("./tmp/result.txt", result, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
+    // console.log(infos);
     // for (var i = 0 ; i<infos.length; i++){
     //     console.log(infos[i])
     // }
